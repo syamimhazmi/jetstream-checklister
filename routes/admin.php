@@ -16,11 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'],function() {
-    Route::get('login', [LoginController::class, 'login'])->name('login');
-    Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::middleware('web')->group(function () {
+        Route::get('login', [LoginController::class, 'login'])->name('login');
+        Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
+    });
 
-    Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('checklists', 'Admin\ChecklistController');
+        // Route::resource('checklist_groups', ChecklistGroup::class);
     });
 });

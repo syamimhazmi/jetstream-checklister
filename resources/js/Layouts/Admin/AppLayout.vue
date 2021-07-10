@@ -20,6 +20,9 @@
                                 <jet-nav-link :href="route('admin.dashboard')" :active="route().current('admin.dashboard')">
                                     Dashboard
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('admin.checklists.index')" :active="route().current('admin.checklists.*')">
+                                    Checklist
+                                </jet-nav-link>
                             </div>
                         </div>
 
@@ -140,8 +143,11 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                        <jet-responsive-nav-link :href="route('admin.dashboard')" :active="route().current('admin.dashboard')">
                             Dashboard
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link :href="route('admin.checklists.index')" :active="route().current('admin.checklists.*')">
+                            Checklist
                         </jet-responsive-nav-link>
                     </div>
 

@@ -21,3 +21,6 @@ Route::middleware('web')->get('/', [WelcomeController::class, 'index'])->name('w
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+require_once __DIR__ . '/inertia.php';
+require_once __DIR__ . '/fortify.php';
