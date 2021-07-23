@@ -221,16 +221,23 @@
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header"></slot>
-                </div>
-            </header>
+            <!-- <header class="bg-white shadow" v-if="$slots.header">
+              <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <slot name="header"></slot>
+              </div>
+            </header> -->
 
-            <!-- Page Content -->
-            <main>
-                <slot></slot>
-            </main>
+            <div class="relative flex">
+              <!-- Side navigation bar -->
+              <side-nav />
+              <!-- Page Content -->
+              <div class="flex-1">
+                <main>
+                  <!-- Slot -->
+                  <slot></slot>
+                </main>
+              </div>
+            </div>
         </div>
     </div>
 </template>
@@ -242,6 +249,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import SideNav from '@/Component/Sidenav'
 
     export default {
         components: {
@@ -251,6 +259,7 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            SideNav
         },
 
         data() {
