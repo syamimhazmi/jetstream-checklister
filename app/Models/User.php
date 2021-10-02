@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -14,13 +13,13 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
-    use HasTeams;
-    use Notifiable;
-    use TwoFactorAuthenticatable;
-    use HasRoles;
+    use HasApiTokens,
+        HasFactory,
+        HasProfilePhoto,
+        HasTeams,
+        Notifiable,
+        TwoFactorAuthenticatable,
+        HasRoles;
 
     /**
      * The attributes that are mass assignable.
