@@ -136,7 +136,9 @@
                   </MenuItem>
 
                     <MenuItem v-slot="{ active }" >
-                      <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']" :onclick="logout">Logout</a>
+                      <form @submit.prevent="logout" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">
+                        <a href="#">Logout</a>
+                      </form>
                     </MenuItem>
                 </MenuItems>
               </transition>
@@ -189,6 +191,7 @@ import {
 } from '@heroicons/vue/outline'
 import { SearchIcon } from '@heroicons/vue/solid'
 
+// Some of the child need to be more dynamic
 const navigation = [
   { name: 'Dashboard', icon: HomeIcon, current: true, href: '#' },
   {
@@ -282,7 +285,7 @@ export default {
     }
   },
   methods: {
-    logout() {
+    logou() {
       this.$inertia.post(route('logout'));
     }
   }
