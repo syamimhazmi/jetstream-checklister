@@ -227,18 +227,6 @@
                 <slot name="header"></slot>
               </div>
             </header> -->
-
-            <div class="relative flex">
-              <!-- Side navigation bar -->
-              <side-nav />
-              <!-- Page Content -->
-              <div class="flex-1">
-                <main>
-                  <!-- Slot -->
-                  <slot></slot>
-                </main>
-              </div>
-            </div>
         </div>
     </div>
 </template>
@@ -250,7 +238,6 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
-    import SideNav from '@/Component/SideNav'
 
     export default {
         components: {
