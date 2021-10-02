@@ -247,7 +247,6 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
-            SideNav
         },
 
         data() {

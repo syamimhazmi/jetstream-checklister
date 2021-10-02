@@ -1,6 +1,6 @@
 <template>
     <app-layout>
-        <template #header>
+        <!-- <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Dashboard
             </h2>
@@ -12,18 +12,16 @@
                     <welcome />
                 </div>
             </div>
-        </div>
+        </div> -->
     </app-layout>
 </template>
 
 <script>
     import AppLayout from '@/Layouts/Admin/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
 
     export default {
         components: {
             AppLayout,
-            Welcome
         },
     }
 </script>
