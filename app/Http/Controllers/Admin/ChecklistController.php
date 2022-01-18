@@ -36,7 +36,7 @@ class ChecklistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Use repositories for storing and updating
     }
 
     /**

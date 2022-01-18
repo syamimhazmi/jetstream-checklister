@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
-use App\Http\Controllers\Admin\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +23,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('pages', PageController::class);
+        Route::resource('pages', 'Admin\PageController');
         Route::resource('checklists', 'Admin\ChecklistController');
         Route::resource('checklist_groups', 'Admin\ChecklistGroupController');
     });

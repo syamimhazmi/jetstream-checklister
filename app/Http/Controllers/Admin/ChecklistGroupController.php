@@ -2,12 +2,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChecklistGroupRequest;
 use App\Models\ChecklistGroup;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Contracts\Repositories\ChecklistGroup as Repository;
 
 class ChecklistGroupController extends Controller
 {
+    protected $repository;
+
+    public function __construct(Repository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,12 +40,17 @@ class ChecklistGroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ChecklistGroupRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ChecklistGroupRequest $request)
     {
-        //
+        $request->validate();
+
+        $checklistGroup = $this->repository->create($request->all());
+
+        return redirect()->route('admin.checklist_groups.show', ['checklist_groups' => $checklistGroup->id])
+            ->with('success', 'Checklist group created.');
     }
 
     /**
@@ -64,11 +78,11 @@ class ChecklistGroupController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ChecklistGroupRequest  $request
      * @param  \App\Models\ChecklistGroup  $checklistGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ChecklistGroup $checklistGroup)
+    public function update(ChecklistGroupRequest $request, ChecklistGroup $checklistGroup)
     {
         //
     }

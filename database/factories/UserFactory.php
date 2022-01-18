@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Factories;
 
 use App\Models\Team;
@@ -34,6 +33,18 @@ class UserFactory extends Factory
     }
 
     /**
+     * Indicate that the model is admin user.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function adminUser()
+    {
+        return $this->state(function (User $user) {
+            return $user->roles()->sync([1]);
+        });
+    }
+
+    /**
      * Indicate that the model's email address should be unverified.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
@@ -54,14 +65,14 @@ class UserFactory extends Factory
      */
     public function withPersonalTeam()
     {
-        if (! Features::hasTeamFeatures()) {
+        if (!Features::hasTeamFeatures()) {
             return $this->state([]);
         }
 
         return $this->has(
             Team::factory()
                 ->state(function (array $attributes, User $user) {
-                    return ['name' => $user->name.'\'s Team', 'user_id' => $user->id, 'personal_team' => true];
+                    return ['name' => $user->name . '\'s Team', 'user_id' => $user->id, 'personal_team' => true];
                 }),
             'ownedTeams'
         );
