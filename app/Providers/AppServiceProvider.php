@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +13,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->registerContracts();
+    }
+
+    /**
+     * Register application contracts.
+     */
+    protected function registerContracts(): void
+    {
+        $this->app->bind('App\Contracts\Repositories\ChecklistGroup', 'App\Repositories\ChecklistGroup');
     }
 
     /**

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,4 +10,9 @@ class Checklist extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['checklist_group_id', 'name'];
+
+    public function checklistGroup()
+    {
+        return $this->belongsTo(ChecklistGroup::class);
+    }
 }
